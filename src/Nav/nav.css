@@ -1,0 +1,49 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar ul li {
+  list-style: none;
+  margin-right: 48px;
+}
+
+.navbar ul li:last-child {
+  margin-right: 0;
+}
+
+.navbar ul {
+  display: flex;
+  align-items: center;
+  margin: 24px 0;
+}
+
+.navbar a {
+  font-size: 16px;
+  text-decoration: none;
+  color: #636363;
+}
+
+.navbar a:hover {
+  padding-bottom: 42px;
+  color: #000;
+  border-bottom: 6px solid var(--primary-color);
+}
+
+.profile-picture a img {
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0);
+}
+
+.company-logo a:hover,
+.cart-logo a:hover,
+.profile-picture a:hover {
+  border-bottom: 0;  color: #000;
+}
+
+.profile-picture a img:hover {
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  transition: 400ms;
+}
