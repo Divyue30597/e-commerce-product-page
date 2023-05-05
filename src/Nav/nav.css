@@ -30,6 +30,12 @@
   border-bottom: 6px solid var(--primary-color);
 }
 
+.cart-logo a:hover {
+  padding-bottom: 40px;
+  color: #000;
+  border-bottom: 6px solid var(--primary-color);
+}
+
 .profile-picture a img {
   height: 64px;
   border-radius: 50%;
@@ -37,9 +43,9 @@
 }
 
 .company-logo a:hover,
-.cart-logo a:hover,
 .profile-picture a:hover {
-  border-bottom: 0;  color: #000;
+  border-bottom: 0;
+  color: #000;
 }
 
 .profile-picture a img:hover {

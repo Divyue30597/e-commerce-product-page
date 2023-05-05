@@ -15,19 +15,19 @@ export function Nav() {
           </picture>
         </li>
         <li>
-          <a href="">Collections</a>
+          <a href="#">Collections</a>
         </li>
         <li>
-          <a href="">Men</a>
+          <a href="#">Men</a>
         </li>
         <li>
-          <a href="">Women</a>
+          <a href="#">Women</a>
         </li>
         <li>
-          <a href="">About</a>
+          <a href="#">About</a>
         </li>
         <li>
-          <a href="">Contact</a>
+          <a href="#">Contact</a>
         </li>
       </ul>
       <ul>
