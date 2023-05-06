@@ -15,7 +15,7 @@
 .product-detail-comp .product-info {
   font-size: 16px;
   color: #636363;
-  max-width: 75%;
+  /* max-width: 75%; */
   margin-bottom: 36px;
 }
 
@@ -49,10 +49,6 @@
   color: #bcbdc0;
   font-size: 16px;
   margin-bottom: 36px;
-}
-
-.counter {
-  max-width: 75%;
 }
 
 .change-counter {
