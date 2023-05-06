@@ -25,10 +25,6 @@
   align-items: center;
 }
 
-.counter {
-  justify-content: space-between;
-}
-
 .product-price {
   margin-bottom: 8px;
 }
@@ -56,6 +52,8 @@
   background-color: #f7f8fd;
   padding: 12px 12px;
   border-radius: 12px;
+  margin-right: 18px;
+  width: 30%;
 }
 
 .change-counter button {
@@ -71,6 +69,10 @@
 .change-counter button:last-child {
   padding: 6px;
   margin-left: 32px;
+}
+
+.add-to-cart {
+  width: 60%;
 }
 
 .add-to-cart button {

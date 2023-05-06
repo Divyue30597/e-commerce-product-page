@@ -1,8 +1,13 @@
+.product-image-section {
+  padding: 18px;
+}
+
 .product-images picture img {
   width: 100%;
   border-radius: 12px;
   margin-bottom: 24px;
   /* display: flex; */
+  cursor: pointer;
 }
 
 .thumbnail-images {
@@ -20,15 +25,23 @@
 .thumbnail-images picture img:hover {
   cursor: pointer;
   transition: 400ms;
-  border: 2px solid var(--primary-color);
+  opacity: 75%;
 }
 
-.thumbnail-images picture img:active {
-  cursor: pointer;
+.is-active {
+  opacity: 75%;
   transition: 400ms;
-  border: 2px solid var(--primary-color);
+  border: 2px solid var(--primary-color) !important;
 }
 
-.product-image-section {
-  padding: 18px;
+dialog {
+  .product-image-section {
+    width: 100%;
+    position: absolute;
+    padding: 24px;
+  }
+
+  .product-images {
+    pointer-events: none;
+  }
 }

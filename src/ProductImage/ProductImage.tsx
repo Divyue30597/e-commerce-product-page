@@ -17,30 +17,68 @@ const productImageThumb = [
   productImg4Thumb,
 ];
 
+function setActiveThumbnail(
+  index: number,
+  setActiveState: React.Dispatch<React.SetStateAction<number>>
+) {
+  setActiveState((activeState: number) => (activeState = index));
+  const imageThumbnailChild = document.querySelectorAll(
+    `.thumbnail-images picture img`
+  );
+
+  imageThumbnailChild.forEach((item, ind) => {
+    if (ind === index) {
+      item.className = "is-active";
+    } else {
+      item.className = "";
+    }
+  });
+}
+
 export function ProductImage() {
   const [activeState, setActiveState] = useState(0);
+  const [dialogActive, setDialogActive] = useState(false);
 
   return (
-    <section className="product-image-section">
-      <div className="product-images">
-        <picture>
-          <img src={productImage[activeState]} alt="" />
-        </picture>
-      </div>
-      <div className="thumbnail-images">
-        {productImageThumb.map((thumbImg, index) => {
-          return (
-            <picture>
-              <img
-                key={index}
-                src={thumbImg}
-                alt="product thumbnail"
-                onClick={() => setActiveState(index)}
-              />
-            </picture>
-          );
-        })}
-      </div>
-    </section>
+    <>
+      {dialogActive && <ImageDialog dialogActive={dialogActive} />}
+      <section className="product-image-section">
+        <div className="product-images">
+          <picture>
+            <img
+              src={productImage[activeState]}
+              alt="Product image"
+              onClick={() => {
+                setDialogActive(!dialogActive);
+              }}
+            />
+          </picture>
+        </div>
+        <div className="thumbnail-images">
+          {productImageThumb.map((thumbImg, index) => {
+            return (
+              <picture key={index}>
+                <img
+                  src={thumbImg}
+                  alt={`product thumbnail ${index}`}
+                  onClick={() => setActiveThumbnail(index, setActiveState)}
+                />
+              </picture>
+            );
+          })}
+        </div>
+      </section>
+    </>
+  );
+}
+
+export function ImageDialog({ dialogActive }: { dialogActive: boolean }) {
+  return (
+    <>
+
+      <dialog open={dialogActive}>
+        <ProductImage />
+      </dialog>
+    </>
   );
 }
