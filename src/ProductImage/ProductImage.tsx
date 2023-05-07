@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import productImg1Thumb from "../assets/images/image-product-1-thumbnail.jpg";
 import productImg1 from "../assets/images/image-product-1.jpg";
 import productImg2Thumb from "../assets/images/image-product-2-thumbnail.jpg";
@@ -8,6 +8,7 @@ import productImg3 from "../assets/images/image-product-3.jpg";
 import productImg4Thumb from "../assets/images/image-product-4-thumbnail.jpg";
 import productImg4 from "../assets/images/image-product-4.jpg";
 import "./productimage.css";
+import { DialogContext } from "../App";
 
 const productImage = [productImg1, productImg2, productImg3, productImg4];
 const productImageThumb = [
@@ -37,48 +38,34 @@ function setActiveThumbnail(
 
 export function ProductImage() {
   const [activeState, setActiveState] = useState(0);
-  const [dialogActive, setDialogActive] = useState(false);
+  const { dialogActive, setDialogActive } = useContext(DialogContext);
 
   return (
-    <>
-      {dialogActive && <ImageDialog dialogActive={dialogActive} />}
-      <section className="product-image-section">
-        <div className="product-images">
-          <picture>
-            <img
-              src={productImage[activeState]}
-              alt="Product image"
-              onClick={() => {
-                setDialogActive(!dialogActive);
-              }}
-            />
-          </picture>
-        </div>
-        <div className="thumbnail-images">
-          {productImageThumb.map((thumbImg, index) => {
-            return (
-              <picture key={index}>
-                <img
-                  src={thumbImg}
-                  alt={`product thumbnail ${index}`}
-                  onClick={() => setActiveThumbnail(index, setActiveState)}
-                />
-              </picture>
-            );
-          })}
-        </div>
-      </section>
-    </>
-  );
-}
-
-export function ImageDialog({ dialogActive }: { dialogActive: boolean }) {
-  return (
-    <>
-
-      <dialog open={dialogActive}>
-        <ProductImage />
-      </dialog>
-    </>
+    <section className="product-image-section">
+      <div className="product-images">
+        <picture>
+          <img
+            src={productImage[activeState]}
+            alt="Product image"
+            onClick={() => {
+              setDialogActive(!dialogActive);
+            }}
+          />
+        </picture>
+      </div>
+      <div className="thumbnail-images">
+        {productImageThumb.map((thumbImg, index) => {
+          return (
+            <picture key={index}>
+              <img
+                src={thumbImg}
+                alt={`product thumbnail ${index}`}
+                onClick={() => setActiveThumbnail(index, setActiveState)}
+              />
+            </picture>
+          );
+        })}
+      </div>
+    </section>
   );
 }

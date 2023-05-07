@@ -1,3 +1,7 @@
+#root {
+  /* position: relative; */
+}
+
 .container {
   margin: auto;
   display: grid;
@@ -17,4 +21,42 @@
 
 hr {
   color: rgb(231, 231, 231);
+}
+
+dialog {
+  border: none;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--neutral-dark-grayish-blue);
+}
+
+.dialog-box {
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-end;
+  position: absolute;
+  top: 10%;
+  left: calc(100vw / 3);
+  z-index: 2;
+}
+
+.dialog-box picture img {
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.dialog-box .product-image-section {
+  padding: 0 !important;
+}
+
+.dialog-box .thumbnail-images {
+  padding: 0 64px;
+}
+
+.dialog-box .product-image-section .product-images picture img {
+  pointer-events: none;
+  max-height: calc(100vh / 1.6);
+  max-width: calc(100vw / 2);
 }

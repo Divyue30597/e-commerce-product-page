@@ -34,14 +34,3 @@
   border: 2px solid var(--primary-color) !important;
 }
 
-dialog {
-  .product-image-section {
-    width: 100%;
-    position: absolute;
-    padding: 24px;
-  }
-
-  .product-images {
-    pointer-events: none;
-  }
-}
