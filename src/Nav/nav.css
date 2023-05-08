@@ -53,3 +53,20 @@
   border-radius: 50%;
   transition: 400ms;
 }
+
+.cart-logo {
+  position: relative;
+}
+
+.item-tag {
+  background-color: var(--primary-color);
+  position: absolute;
+  font-size: 14px;
+  left: 8px;
+  bottom: 16px;
+  width: 24px;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: 700;
+  color: #fff;
+}

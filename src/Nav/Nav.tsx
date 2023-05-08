@@ -2,8 +2,11 @@ import "./nav.css";
 import sneakersLogo from "../assets/images/logo.svg";
 import profileImage from "../assets/images/image-avatar.png";
 import cartIcon from "../assets/images/icon-cart.svg";
+import { useContext } from "react";
+import { ItemCountContext } from "../App";
 
 export function Nav() {
+  const { itemCount } = useContext(ItemCountContext);
   return (
     <nav className="navbar">
       <ul>
@@ -34,6 +37,7 @@ export function Nav() {
         <li>
           <picture className="cart-logo">
             <a href="#">
+              <div className="item-tag">{itemCount}</div>
               <img src={cartIcon} alt="Cart" />
             </a>
           </picture>

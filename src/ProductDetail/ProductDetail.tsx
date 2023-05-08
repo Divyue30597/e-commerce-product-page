@@ -2,8 +2,22 @@ import "./productdetail.css";
 import incrementCounter from "../assets/images/icon-plus.svg";
 import decrementCounter from "../assets/images/icon-minus.svg";
 import cartIcon from "../assets/images/icon-cart-white.svg";
+import { useContext } from "react";
+import { ItemCountContext } from "../App";
 
 export function ProductDetail() {
+  const { itemCount, setItemCount } = useContext(ItemCountContext);
+
+  function increaseCount() {
+    setItemCount((itemCount: number) => itemCount + 1);
+  }
+
+  function decreaseCount() {
+    if (itemCount > 0) {
+      setItemCount((itemCount: number) => itemCount - 1);
+    }
+  }
+
   return (
     <section className="product-detail-comp">
       <p className="product-detail-header">Sneaker Company</p>
@@ -22,13 +36,13 @@ export function ProductDetail() {
       </h3>
       <div className="counter">
         <div className="change-counter">
-          <button>
+          <button onClick={decreaseCount}>
             <picture>
               <img src={decrementCounter} alt="decrement Counter" />
             </picture>
           </button>
-          <strong>0</strong>
-          <button>
+          <strong>{itemCount}</strong>
+          <button onClick={increaseCount}>
             <picture>
               <img src={incrementCounter} alt="increment Counter" />
             </picture>
