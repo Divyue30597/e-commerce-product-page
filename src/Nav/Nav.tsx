@@ -2,13 +2,26 @@ import "./nav.css";
 import sneakersLogo from "../assets/images/logo.svg";
 import profileImage from "../assets/images/image-avatar.png";
 import cartIcon from "../assets/images/icon-cart.svg";
-import { useContext } from "react";
-import { ItemCountContext } from "../App";
+import { useContext, useState } from "react";
+import {
+  DialogContext,
+  IdialogContext,
+  IitemCount,
+  ItemCountContext,
+} from "../App";
+import { CheckoutCard } from "../CheckoutCard/CheckoutCard";
 
 export function Nav() {
-  const { itemCount } = useContext(ItemCountContext);
+  const { itemCount } = useContext<IitemCount>(ItemCountContext);
+  const { dialogActive } = useContext<IdialogContext>(DialogContext);
+  const [cardActive, setCardActive] = useState<boolean>(false);
+
+  function displayCard() {
+    setCardActive((prevState) => !prevState);
+  }
+
   return (
-    <nav className="navbar">
+    <nav className={dialogActive ? " navbar dialog-box-active" : "navbar"}>
       <ul>
         <li>
           <picture className="company-logo">
@@ -35,8 +48,12 @@ export function Nav() {
       </ul>
       <ul>
         <li>
-          <picture className="cart-logo">
-            <a href="#">
+          <picture
+            className={
+              dialogActive ? "cart-logo dialog-box-active" : "cart-logo"
+            }
+          >
+            <a href="#" onClick={displayCard}>
               <div className="item-tag">{itemCount}</div>
               <img src={cartIcon} alt="Cart" />
             </a>
@@ -50,6 +67,7 @@ export function Nav() {
           </picture>
         </li>
       </ul>
+      {cardActive && <CheckoutCard />}
     </nav>
   );
 }

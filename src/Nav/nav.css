@@ -1,6 +1,7 @@
 .navbar {
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .navbar ul li {
@@ -56,6 +57,10 @@
 
 .cart-logo {
   position: relative;
+}
+
+.dialog-box-active {
+  z-index: -1;
 }
 
 .item-tag {

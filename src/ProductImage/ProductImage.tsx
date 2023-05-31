@@ -7,6 +7,8 @@ import productImg3Thumb from "../assets/images/image-product-3-thumbnail.jpg";
 import productImg3 from "../assets/images/image-product-3.jpg";
 import productImg4Thumb from "../assets/images/image-product-4-thumbnail.jpg";
 import productImg4 from "../assets/images/image-product-4.jpg";
+import nextImage from "../assets/images/icon-next.svg";
+import previousImage from "../assets/images/icon-previous.svg";
 import "./productimage.css";
 import { DialogContext } from "../App";
 
@@ -22,9 +24,13 @@ function setActiveThumbnail(
   index: number,
   setActiveState: React.Dispatch<React.SetStateAction<number>>
 ) {
-  setActiveState((activeState: number) => (activeState = index));
+  setActiveState((activeState: number) => {
+    activeState = index;
+    return activeState;
+  });
+
   const imageThumbnailChild = document.querySelectorAll(
-    `.thumbnail-images picture img`
+    ".thumbnail-images picture img"
   );
 
   imageThumbnailChild.forEach((item, ind) => {
@@ -40,9 +46,31 @@ export function ProductImage() {
   const [activeState, setActiveState] = useState(0);
   const { dialogActive, setDialogActive } = useContext(DialogContext);
 
+  function decreaseActiveState() {
+    setActiveState((prevState) => {
+      return prevState - 1;
+    });
+  }
+
+  function increaceActiveState() {
+    setActiveState((prevState) => {
+      return prevState + 1;
+    });
+  }
+
   return (
     <section className="product-image-section">
       <div className="product-images">
+        {dialogActive && (
+          <button
+            className="decrement-button"
+            onClick={() => {
+              if (activeState > 0) decreaseActiveState();
+            }}
+          >
+            <img src={previousImage} alt="left arrow icon" />
+          </button>
+        )}
         <picture>
           <img
             src={productImage[activeState]}
@@ -52,6 +80,17 @@ export function ProductImage() {
             }}
           />
         </picture>
+        {dialogActive && (
+          <button
+            className="increment-button"
+            onClick={() => {
+              if (activeState < productImageThumb.length - 1)
+                increaceActiveState();
+            }}
+          >
+            <img src={nextImage} alt="right arrow icon" />
+          </button>
+        )}
       </div>
       <div className="thumbnail-images">
         {productImageThumb.map((thumbImg, index) => {
@@ -59,8 +98,10 @@ export function ProductImage() {
             <picture key={index}>
               <img
                 src={thumbImg}
-                alt={`product thumbnail ${index}`}
-                onClick={() => setActiveThumbnail(index, setActiveState)}
+                alt={`product thumbnail ${index === 0 ? "is-active" : ""}`}
+                onClick={() => {
+                  setActiveThumbnail(index, setActiveState);
+                }}
               />
             </picture>
           );

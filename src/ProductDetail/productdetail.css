@@ -88,6 +88,13 @@
   box-shadow: 0 20px 50px 10px var(--secondary-color);
 }
 
+.change-counter button:first-child:hover,
+.change-counter button:last-child:hover,
+.add-to-cart button:hover {
+  opacity: 75%;
+  transition: 400ms;
+}
+
 .add-to-cart img {
   margin-right: 16px;
   padding: 4px 0 4px 36px;

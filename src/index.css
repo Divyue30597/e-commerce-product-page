@@ -12,8 +12,8 @@
   --secondary-color: #ffede0;
 
   --neutral-very-dark-blue: hsla(218, 12%, 13%);
-  --neutral-dark-grayish-blue: hsla(218, 12%, 13%, 0.75);
-  --neutral-grayish-blue: hsl(220, 14%, 75%);
+  --neutral-dark-grayish-blue: hsla(218, 12%, 13%, 0.749);
+  --neutral-grayish-blue: hsl(220, 14%, 40%);
   --neutral-light-grayish-blue: hsl(223, 64%, 98%);
   --neutral-white: hsl(0, 0%, 100%);
 
